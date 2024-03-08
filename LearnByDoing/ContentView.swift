@@ -9,14 +9,23 @@ import SwiftUI
 
 struct ContentView: View {
     //MARK: - PROPERTIES
-    
+    var card: [Card] = cardData
     
     //MARK: - Content
     var body: some View {
-      CardView()
+        
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(alignment:.center,spacing: 20) {
+                ForEach(cardData) { item in
+                   // CardView()
+                    CardView(card: item)
+                }
+                .padding(20)
+            }//HSTACK
+        }//SCROLL
     }
 }
 //MARK: - PREVIEW
 #Preview {
-    ContentView()
+    ContentView(card: cardData)
 }
